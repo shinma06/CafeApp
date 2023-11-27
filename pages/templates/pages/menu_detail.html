@@ -2,45 +2,67 @@
 
 {% block title %}WCB Cafe - NEWS{% endblock title %}
 
-{% block id %}news{% endblock id %}
+{% block id %}menu-ditail{% endblock id %}
 
-{% block page %}NEWS{% endblock page %}
+{% block page %}MENU DETAIL{% endblock page %}
 
 {% block content %}
 <div class="news-contents wrapper">
-    <!-- ニュース -->
+    <!-- メニュー説明 -->
+    <div class="menu-detail">
+        <!-- Menu Image -->
+        <div class="menu-image">
+            <img src="whit.jpg" alt="Menu Image">
+        </div>
+        
+        <!-- Menu Name & Rating -->
+        <div class="menu-info">
+            <h2>水出しコーヒー</h2>
+            <div class="rating">
+                <span class="rating-value">4.5</span>
+            </div>
+        </div>
+        
+        <!-- Menu Description -->
+        <div class="menu-description">
+            <h2>メニューの説明</h2>
+            <p>This is a description of the menu item. It provides information about the dish and its ingredients.</p>
+        </div>
+        
+        <!-- Allergy List -->
+        <div class="allergy-list">
+            <h2>アレルギーリスト</h2>
+            <ul>
+                <li>Allergy Item 1</li>
+                <li>Allergy Item 2</li>
+                <li>Allergy Item 3</li>
+            </ul>
+        </div>
+        
+        <!-- Price -->
+        
+        <div class="price">
+            <h2>価格</h2>
+            <span>¥1000 (税込)</span>
+        </div>
+    </div>
+    <!-- レビュー一覧 -->
     <article>
-        {% if category_name %}
-            <h2>絞り込み：{{ category_name }}</h2>
-        {% endif %}
-        {% if object_list %}
-            {% for item in object_list %}
-                <header class="post-info">
-                    <h2 class="post-title">{{ item.title }}</h2>
-                    <p class="post-date">{{ item.created_at|date:"m" }}/{{ item.created_at|date:"d" }}<span>{{ item.created_at|date:"Y" }}</span></p>
-                    <p class="post-cat">カテゴリー：{{ item.get_category_display }}</p>
-                </header>
-                {% if item.img %}
-                    <img src="{{ item.img.url }}" alt="{{ item.alt }}">
-                {% endif %}
-                <p>{{ item.text }}</p>
-            {% endfor %}
-        {% else %}
-            <p>ニュースはありません。</p>
-        {% endif %}
+        <h2>お客様のレビュー</h2>
+        <p>ニュースはありません。</p>
     </article>
 
     <!-- サイドバー -->
     <aside>
         <h3 class="sub-title">カテゴリー</h3>
         <ul class="sub-menu">
-            {% if category_name %}
-                <li><a href="{% url 'pages:news' %}">すべてのニュース</a></li>
-            {% endif %}
-            <li><a href="{% url 'pages:news-category' category='promotion' %}">お店の紹介 {% if category_name == 'お店の紹介' %}<strong style="color: #0bd;">&lt;</strong>{% endif %}</a></li>
-            <li><a href="{% url 'pages:news-category' category='irregularmenu' %}">期間限定メニュー {% if category_name == '期間限定メニュー' %}<strong style="color: #0bd;">&lt;</strong>{% endif %}</a></li>
-            <li><a href="{% url 'pages:news-category' category='event' %}">イベント {% if category_name == 'イベント' %}<strong style="color: #0bd;">&lt;</strong>{% endif %}</a></li>
-            <li><a href="{% url 'pages:news-category' category='talk' %}">お客様との会話 {% if category_name == 'お客様との会話' %}<strong style="color: #0bd;">&lt;</strong>{% endif %}</a></li>
+            <li><a href="#">全てのレビュー(絞り込まれていたら表示) <strong style="color: #0bd;">&lt;</strong></a></li>
+            <li><a href="#">昇順 or 降順 <strong style="color: #0bd;">&lt;</strong></a></li>
+            <li><a href="#">星5のレビュー <strong style="color: #0bd;">&lt;</strong></a></li>
+            <li><a href="#">星4のレビュー <strong style="color: #0bd;">&lt;</strong></a></li>
+            <li><a href="#">星3のレビュー <strong style="color: #0bd;">&lt;</strong></a></li>
+            <li><a href="#">星2のレビュー <strong style="color: #0bd;">&lt;</strong></a></li>
+            <li><a href="#">星1のレビュー <strong style="color: #0bd;">&lt;</strong></a></li>
         </ul>
 
         <h3 class="sub-title">このお店について</h3>
